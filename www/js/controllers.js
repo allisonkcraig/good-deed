@@ -52,5 +52,17 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('EventsCtrl', function($scope) {
+  $scope.events = [
+    { title: 'Soup Kitchen', id: 1 },
+    { title: 'ASPCA', id: 2 },
+    { title: 'Clean the Streets', id: 3 },
+    { title: 'Soup Kitchen', id: 4 },
+    { title: 'Gardening', id: 5 },
+    { title: 'Rally', id: 6 }
+  ];
+})
+.controller('EventCtrl', function($scope, $stateParams) {
+})
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
