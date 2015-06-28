@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
     { title: 'Soup Night - July 1st', id: 1 },
     { title: 'Paint my Garage - July 8th', id: 2 },
     { title: 'Yard Cleanup - July 8th', id: 3 }
-  ];
+  ];w
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
