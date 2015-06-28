@@ -88,7 +88,11 @@ angular.module('starter.controllers', [])
 })
 .controller('SplashPageCtrl', function($scope, $stateParams) {
 })
-.controller('ProfileCtrl', function($scope, $stateParams) {
+.controller('ProfileCtrl', function($scope, $stateParams, Users) {
+      Users.$loaded().then(function() {
+        $scope.user = Users.$getRecord(2);
+        console.log($scope.user);
+      });
 })
 .controller('MyCalendarCtrl', function($scope) {
    $scope.mycalendar = [
@@ -114,4 +118,15 @@ angular.module('starter.controllers', [])
         });
       });
   return Events;
+})
+.factory('Users', function($firebaseArray) {
+  var itemsRef = new Firebase("https://good-deed.firebaseio.com/users");
+  var Users = $firebaseArray(itemsRef);
+  Users.$loaded()
+      .then(function(users) {
+        users.forEach(function(user) {
+          //console.log(user);
+        });
+      });
+  return Users;
 });
