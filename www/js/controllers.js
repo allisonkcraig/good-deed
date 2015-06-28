@@ -52,15 +52,39 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('EventsCtrl', function($scope) {
-  $scope.events = [
-    { title: 'Soup Kitchen', id: 1 },
-    { title: 'ASPCA', id: 2 },
-    { title: 'Clean the Streets', id: 3 },
-    { title: 'Soup Kitchen', id: 4 },
-    { title: 'Gardening', id: 5 },
-    { title: 'Rally', id: 6 }
-  ];
+.controller('EventsCtrl', function($scope, Events) {
+  $scope.events = Events;
+  var currentUser = {
+    friends: [1]
+  };
+
+      Events.$loaded()
+          .then(function(events) {
+            events.forEach(function(event) {
+              event.maxTotal = 0;
+              event.currentTotal = 0;
+              event.roles.forEach(function(role) {
+               event.maxTotal += role.attendence.max;
+                event.currentTotal += role.attendence.current ? role.attendence.current.length : 0;
+              });
+            });
+          });
+
+      $scope.friendsFamily = function(event) {
+        return currentUser.friends.some(function(friendId) {
+          if (friendId == event.userId) {
+            return true;
+          }
+        })
+      }
+
+      $scope.public = function(event) {
+        return !event.private && !$scope.friendsFamily(event);
+      }
+
+
+
+
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.events = [
@@ -77,4 +101,8 @@ angular.module('starter.controllers', [])
 .controller('MyCalendarCtrl', function($scope, $stateParams) {
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+    .factory('Events', function($firebaseArray) {
+      var itemsRef = new Firebase("https://good-deed.firebaseio.com/events");
+      return $firebaseArray(itemsRef.orderByChild('date'));
+    });

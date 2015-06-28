@@ -4,14 +4,19 @@
     	<ion-item class= "item item-divider"> 
     	<h2>Friends & Family</h2>
     </ion-item>
-      <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}">
-        {{event.title}}
+      <ion-item ng-repeat="event in events | filter:friendsFamily" href="#/app/events/{{event.id}}">
+
+        <div>{{event.title}}</div>
+        <div>{{event.date | date}}</div>
+        <div>Current: {{event.currentTotal}} Max: {{event.maxTotal}}</div>
       </ion-item>
       <ion-item class= "item item-divider"> 
-    	<h2>Community</h2>
+    	<h2>Public</h2>
     </ion-item>
-      <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}">
-        {{event.title}}
+      <ion-item ng-repeat="event in events | filter:public" href="#/app/events/{{event.id}}">
+        <div>{{event.title}}</div>
+        <div>{{event.date | date}}</div>
+        <div>Current: {{event.currentTotal}} Max: {{event.maxTotal}}</div>
       </ion-item>
     </ion-list>
   </ion-content>
