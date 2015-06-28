@@ -1,18 +1,21 @@
-<ion-view view-title="Profile">
+<ion-view view-title="Profile" id="profile">
 <ion-nav-title>Good Deed</ion-nav-title>
   <ion-content>
     <div class="list card">
 
   <div class="item item-avatar">
-    <img src="mcfly.jpg">
-    <h2>Username</h2>
-    <p>User Zipcode</p>
+    <div class="image">
+      <img src="{{ user.image }}">
+    </div>
+    <div>
+      Name: {{ user.first }} {{ user.last }}<br/>
+      Last Volunteer Event: <!-- {{  }} -->
+    </div>
   </div>
 
   <div class="item item-body">
-    <p>
-      User Bio. 
-    </p>
+    <h3>Bio</h3>
+    <p>{{ user.bio }}</p>
     
   </div>
 
