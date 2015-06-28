@@ -1,18 +1,44 @@
-<ion-view view-title="Settigns">
+<ion-view view-title="Settigns" id="setting">
 <ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
   <ion-content>
-  <ion-item class= "item item-divider"> 
-    	<h2>Settings</h2>
-    </ion-item>
-  <button class="button button-full button-outline button-positive">
-  Edit Name
-</button>
-<button class="button button-full button-outline button-positive">
-  Edit Profile Pic
-</button>
-<button class="button button-full button-outline button-positive">
-  Edit Zipcode
-</button>
+    <div class="item item-divider">
+      <i class="fa fa-heart-o"></i> Setting
+    </div>
+    <div class="item">
+      <div class="change_photo">
+        <img src="{{ user.image }}">
+        <p>change_photo</p>
+      </div>
+
+
+      <div class="info">
+        <p><span class="title">Name:</span> <span class="edit">{{ user.name.first }}</span> {{ user.name.last }}</p>
+        <p><span class="title">Last Volunteer Event:</span> <!-- {{  }} --></p>
+      </div>
+    </div>
+    <div class="item item-body">
+      <h3>Bibliography:</h3>
+      <p>{{ user.bio }}</p>
+    </div>
+    <div class="item item-body" ng-show="user.viewPoints">
+      <p><span class="title">Current Points:</span> {{ user.points }}</p>
+    </div>
+    <div class="item item-divider">
+      Badges Earned:
+    </div>
+
+    <div class="item item-body">
+      <div class="list list-inset">
+        <div class="item" ng-repeat="badge in badges">
+          {{ badge.name }}
+        </div>
+      </div>
+
+    </div>
+
+    <button class="button button-block button-positive" ng-click="goToEdit()">
+      Edit
+    </button>
   </ion-content>
 </ion-view>
 
