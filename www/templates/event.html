@@ -33,7 +33,7 @@
                             <p style="margin: 0; margin-top: 10px;"><span class="title">Currently Signed Up:</span> {{ role.attendence.current.length ? role.attendence.current.length : 0 }}</p>
                             <p style="margin: 0"><span class="title">Need:</span> {{ role.attendence.max }}</p>
                         </div>
-                        <button class="button button-positive" ng-click="showConfirm(role)" style="margin-top: 23px;">Sign me up!</button>
+                        <button ng-hide="showSignedUp(role)" class="button button-positive" ng-click="showConfirm(role)" style="margin-top: 23px;">Sign me up!</button>
                     </div>
 
                 </div>

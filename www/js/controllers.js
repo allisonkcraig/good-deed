@@ -107,9 +107,19 @@ angular.module('starter.controllers', [])
 
 })
 .controller('EventCtrl', function($scope, $stateParams, Events, $ionicPopup) {
-   Events.$loaded().then(function() {
-     $scope.event = Events.$getRecord($stateParams.eventId);
-   });
+    Events.$loaded().then(function() {
+        $scope.event = Events.$getRecord($stateParams.eventId);
+    });
+
+    $scope.showSignedUp = function(role) {
+        if (!role.attendence.current) return false;
+
+        return role.attendence.current.some(function(currentId) {
+            if (currentUser.userId === currentId) {
+                return true;
+            }
+        });
+    }
 
     $scope.maxTotal = function(event) {
         if (!event) return 0;
@@ -137,10 +147,11 @@ angular.module('starter.controllers', [])
         });
         confirmPopup.then(function(res) {
             if(res) {
+                if (!role.attendence.current) {role.attendence.current = []}
                 role.attendence.current.push(currentUser.userId);
                 Events.$save($scope.event);
             } else {
-                console.log('Cancel');
+                //console.log('Cancel');
             }
         });
     };
