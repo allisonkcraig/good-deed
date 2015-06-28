@@ -112,6 +112,7 @@ angular.module('starter.controllers', [])
    });
 
     $scope.maxTotal = function(event) {
+        if (!event) return 0;
         var maxTotal = 0;
         event.roles.forEach(function(role) {
             maxTotal += role.attendence.max;
@@ -120,6 +121,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.currentTotal = function(event) {
+        if (!event) return 0;
         var currentTotal = 0;
         event.roles.forEach(function(role) {
             currentTotal += role.attendence.current ? role.attendence.current.length : 0;
