@@ -37,6 +37,10 @@ angular.module('starter.controllers', [])
     $state.go('app.events');
     $scope.modal.hide();
   };
+
+  $scope.goToProfile = function() {
+    $state.go('app.profile');
+  }
 })
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -78,28 +82,31 @@ angular.module('starter.controllers', [])
   $scope.friendslist = [
     { title: 'Amy Tsang', id: 2 },
     { title: 'Rachel Smith', id: 3 },
-    { title: 'Derek Hammer', id: 4 },
+    { title: 'Derek Hammer', id: 4 }
   ];
 })
 
 .controller('EventCtrl', function($scope, $stateParams) {
 })
-.controller('SettingsCtrl', function($scope, $stateParams) {
-})
-.controller('SplashPageCtrl', function($scope, $stateParams) {
-})
-.controller('ProfileCtrl', function($scope, $stateParams, Users, $state) {
+.controller('SettingsCtrl', function($scope, $stateParams, Users, $state) {
       $scope.goToEdit = function() { $state.go('app.settings'); }
       Users.$loaded().then(function() {
         $scope.user = Users.$getRecord(2);
-        console.log($scope.user);
+      });
+})
+.controller('SplashPageCtrl', function($scope, $stateParams) {
+})
+.controller('ProfileCtrl', function($scope, $stateParams, Users, $state, Badges) {
+      $scope.goToEdit = function() { $state.go('app.settings'); }
+      Users.$loaded().then(function() {
+        $scope.user = Users.$getRecord(2);
       });
 })
 .controller('MyCalendarCtrl', function($scope) {
    $scope.mycalendar = [
     { title: 'Soup Night - July 1st', id: 1 },
     { title: 'Paint my Garage - July 8th', id: 2 },
-    { title: 'Yard Cleanup - July 8th', id: 3 },
+    { title: 'Yard Cleanup - July 8th', id: 3 }
   ];
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
@@ -130,4 +137,15 @@ angular.module('starter.controllers', [])
         });
       });
   return Users;
+})
+.factory('Badges', function($firebaseArray) {
+  var itemsRef = new Firebase("https://good-deed.firebaseio.com/badges");
+  var Badges = $firebaseArray(itemsRef);
+  Badges.$loaded()
+      .then(function(badges) {
+        badges.forEach(function(badge) {
+          console.log(badge);
+        });
+      });
+  return Badges;
 });

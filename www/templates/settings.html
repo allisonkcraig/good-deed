@@ -1,18 +1,45 @@
-<ion-view view-title="Settigns">
+<ion-view view-title="Settigns" id="setting">
 <ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
   <ion-content>
-  <ion-item class= "item item-divider"> 
-    	<h2>Settings</h2>
-    </ion-item>
-  <button class="button button-full button-outline button-positive">
-  Edit Name
-</button>
-<button class="button button-full button-outline button-positive">
-  Edit Profile Pic
-</button>
-<button class="button button-full button-outline button-positive">
-  Edit Zipcode
-</button>
+    <div class="item item-divider">
+      <i class="fa fa-heart-o"></i> Setting
+    </div>
+    <div class="item">
+      <div class="change_photo">
+        <img src="{{ user.image }}">
+        <p>change_photo</p>
+      </div>
+
+
+      <div class="info">
+        <p><span class="title">First Name:</span> <span class="edit" contenteditable="true">{{ user.name.first }}</span></p>
+        <p><span class="title">Last Last:</span> <span class="edit" contenteditable="true">{{ user.name.last }}</span></p>
+      </div>
+    </div>
+    <div class="item item-body">
+      <h3>Bibliography:</h3>
+      <p class="edit" contenteditable="true">{{ user.bio }}</p>
+    </div>
+    <div class="item item-body" ng-show="user.viewPoints">
+      <ul class="list">
+
+        <li class="item item-toggle">
+          <span class="title">Current Points:</span> {{ user.points }}
+          <span class="show">Show:</span>
+          <label class="toggle toggle-positive">
+            <input type="checkbox" checked>
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+
+      </ul>
+    </div>
+
+    <button class="button button-block button-positive" ng-click="goToProfile()">
+      Save
+    </button>
   </ion-content>
 </ion-view>
 

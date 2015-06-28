@@ -158,3 +158,45 @@ ion-view[special-class=splashpage] {
 	top: 26px;
 	right: 20px;
 }
+
+/* Setting */
+#setting .change_photo {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	background-color: #424242;
+	text-align: center;
+	cursor: pointer;
+}
+
+#setting .change_photo img {
+	height: 100%;
+}
+
+#setting .change_photo p {
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	left: 0;
+	bottom: 0;
+	padding: 5px;
+}
+
+#setting .edit {
+	border: 1px dashed #000;
+	padding: 5px;
+	display: block;
+}
+
+#setting .show {
+	display: inline-block;
+	float: right;
+}
+
+#setting .info {
+	display: inline-block;
+	width: calc(100% - 160px);
+}
