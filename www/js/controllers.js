@@ -88,7 +88,8 @@ angular.module('starter.controllers', [])
 })
 .controller('SplashPageCtrl', function($scope, $stateParams) {
 })
-.controller('ProfileCtrl', function($scope, $stateParams, Users) {
+.controller('ProfileCtrl', function($scope, $stateParams, Users, $state) {
+      $scope.goToEdit = function() { $state.go('app.settings'); }
       Users.$loaded().then(function() {
         $scope.user = Users.$getRecord(2);
         console.log($scope.user);
