@@ -85,9 +85,6 @@ angular.module('starter.controllers', [])
     { title: 'Derek Hammer', id: 4 }
   ];
 })
-
-.controller('EventCtrl', function($scope, $stateParams) {
-})
 .controller('SettingsCtrl', function($scope, $stateParams, Users, $state) {
       $scope.goToEdit = function() { $state.go('app.settings'); }
       Users.$loaded().then(function() {
@@ -101,6 +98,16 @@ angular.module('starter.controllers', [])
       Users.$loaded().then(function() {
         $scope.user = Users.$getRecord(2);
       });
+      Badges.$loaded().then(function() {
+        $scope.badge = Badges;
+        Badges.forEach(function(badge) {
+          if (badge.score.max <= $scope.user.counter) {
+            $scope.badgeImage = badge.image;
+            $scope.badges.push($scope.badgeImage);
+          }
+        });
+      });
+      $scope.badges = [];
 })
 .controller('MyCalendarCtrl', function($scope) {
    $scope.mycalendar = [
@@ -144,7 +151,7 @@ angular.module('starter.controllers', [])
   Badges.$loaded()
       .then(function(badges) {
         badges.forEach(function(badge) {
-          console.log(badge);
+          //console.log(badge);
         });
       });
   return Badges;
