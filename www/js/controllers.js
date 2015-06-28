@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $state, $timeout) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -31,13 +31,11 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    $ionicHistory.nextViewOptions({
+      disableBack: true
+    });
+    $state.go('app.events');
+    $scope.modal.hide();
   };
 })
 
@@ -88,13 +86,14 @@ angular.module('starter.controllers', [])
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.friendslist = [
-    { title: 'Allison', id: 1 },
-    { title: 'Amy', id: 2 },
-    { title: 'Rachel', id: 3 },
-    { title: 'Derek', id: 4 },
+    { title: 'Amy Tsang', id: 2 },
+    { title: 'Rachel Smith', id: 3 },
+    { title: 'Derek Hammer', id: 4 },
   ];
 })
 .controller('EventCtrl', function($scope, $stateParams) {
+})
+.controller('SettingsCtrl', function($scope, $stateParams) {
 })
 .controller('SplashPageCtrl', function($scope, $stateParams) {
 })
@@ -102,9 +101,9 @@ angular.module('starter.controllers', [])
 })
 .controller('MyCalendarCtrl', function($scope) {
    $scope.mycalendar = [
-    { title: 'Soup Kitchen', id: 1 },
-    { title: 'Clean the Streets', id: 2 },
-    { title: 'Gardening', id: 3 },
+    { title: 'Soup Night - July 1st', id: 1 },
+    { title: 'Paint my Garage - July 8th', id: 2 },
+    { title: 'Yard Cleanup - July 8th', id: 3 },
   ];
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {

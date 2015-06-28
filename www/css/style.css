@@ -18,14 +18,18 @@
 }
 .logofont {
 	font-family: Quicksand;
+	font-size: 1.5em;
 }
 .splashfont {
 	font-family: Quicksand;
-	margin-top: 40%;
+	margin-top: 50%;
 	text-align: center;
-
+	color: #0047AB;
 	font-size: 400%;
 }
 .splashbuttons {
-	margin-top: 60%;
+	margin-top: 30%;
+}
+ion-view[special-class=splashpage] {
+	background-image: url(img/white-linen-texture);
 }

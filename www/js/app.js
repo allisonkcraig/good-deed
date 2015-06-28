@@ -91,7 +91,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
     views: {
       'menuContent': {
         templateUrl: "templates/splashpage.html",
-        controller: 'SplashPageCtrl'
+        controller: 'AppCtrl'
+      }
+    }
+  })
+    .state('app.settings', {
+    url: "/settings",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/settings.html",
+        controller: 'SettingsCtrl'
       }
     }
   })
