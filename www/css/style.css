@@ -33,3 +33,23 @@
 ion-view[special-class=splashpage] {
 	background-image: url(img/white-linen-texture);
 }
+
+
+/* Profile Page */
+#profile .item-avator {
+	padding-left: 0;
+}
+#profile .item-avatar .image {
+	display: inline-block;
+	width: 80px;
+}
+
+#profile .item-avatar .image img {
+	margin: 0 auto;
+	max-height: 100px;
+}
+
+#profile .item-avatar .info {
+	display: inline-block;
+	width: calc(100% - 80px);
+}
