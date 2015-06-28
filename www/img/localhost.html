@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://localhost:8100/#/app/splashpage -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+    <meta charset="utf-8">
+    <script>
+      // Injected Ionic Go To URL Live Reload Plugin
+      window.LiveReloadPlugin_IonicGoToUrl = (function() {
+        var GOTO_KEY = "__ionic_goto_url__";
+        var HISTORY_GO_KEY = "__ionic_history_go__";
+        var GoToUrlPlugin = function(window, host) {
+          this.window = window;
+          this.host = host;
+        }
+        GoToUrlPlugin.identifier = "__ionic_goto_url__";
+        GoToUrlPlugin.version = "1.0";
+        GoToUrlPlugin.prototype.reload = function(path) {
+          try {
+            if(path) {
+              if(path.indexOf(GOTO_KEY) === 0) {
+                this.window.document.location = path.replace(GOTO_KEY, "");
+                return true;
+              }
+              if(path.indexOf(HISTORY_GO_KEY) === 0) {
+                this.window.document.history.go( parseInt(path.replace(HISTORY_GO_KEY, ""), 10));
+                return true;
+              }
+            }
+          } catch(e) {
+            console.log(e);
+          }
+          return false;
+        };
+        return GoToUrlPlugin;
+      })();
+    </script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="http://localhost:8100/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="http://localhost:8100/css/style.css?livereload=1435507622789" rel="stylesheet">
+    <link href="./localhost_files/css" rel="stylesheet" type="text/css">
+    <link href="./localhost_files/css(1)" rel="stylesheet" type="text/css">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="./localhost_files/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="./localhost_files/cordova.js"></script>
+
+    <!-- Firebase -->
+    <script src="./localhost_files/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="./localhost_files/angularfire.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="./localhost_files/app.js"></script>
+    <script src="./localhost_files/controllers.js"></script>
+  </head>
+
+  <body ng-app="starter" class="grade-a platform-browser platform-macintel platform-ready">
+    <ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-side-menus enable-menu-with-back-views="false" class="pane view" nav-view="active" style="opacity: 1; -webkit-transform: translate3d(0%, 0px, 0px);">
+  <ion-side-menu-content class="menu-content pane">
+    <ion-nav-bar class="bar-positive nav-bar-container hide" nav-bar-transition="ios" nav-bar-direction="none" nav-swipe="">
+      <ion-nav-back-button class="hide"></ion-nav-back-button>
+
+      <ion-nav-buttons side="left" class="hide"></ion-nav-buttons>
+    <div class="nav-bar-block" nav-bar="cached"><ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center"><button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-ios-arrow-back"></i> 
+      <span class="back-text"><span class="default-title">Back</span><span class="previous-title hide"></span></span></button><div class="buttons buttons-left header-item"><span class="left-buttons">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </span></div><div class="title title-center header-item"></div></ion-header-bar></div><div class="nav-bar-block" nav-bar="active"><ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center"><button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-ios-arrow-back"></i> 
+      <span class="back-text"><span class="default-title">Back</span><span class="previous-title hide"></span></span></button><div class="buttons buttons-left header-item"><span class="left-buttons">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </span></div><div class="title title-center header-item"></div></ion-header-bar></div></ion-nav-bar>
+    <ion-nav-view name="menuContent" class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe="">
+    <ion-view class="pane">
+      <ion-nav-title class="hide"></ion-nav-title>
+    </ion-view>
+  <ion-view hide-nav-bar="true" special-class="splashpage" class="pane" nav-view="active" style="opacity: 1; -webkit-transform: translate3d(0%, 0px, 0px);">
+<ion-content class="scroll-content ionic-scroll"><div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+<div class="logo">
+<img src="./localhost_files/good-deed-logo.png">
+</div>
+<div class="splashfont">
+	<!-- change to #387ef5 when amy is finished with CSS-->
+	Good Deed
+</div>
+<div class="splashbuttons">
+	<button class="button button-full button-calm" ng-click="login()">
+		Log In
+	</button>
+	<button class="button button-full button-balanced">
+		Sign Up
+	</button>
+</div>
+</div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
+</ion-view></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" is-enabled="true" width="275" class="menu menu-left" style="width: 275px;">
+    <ion-header-bar class="bar-positive bar bar-header disable-user-behavior">
+      <h1 class="title">User Name</h1>
+    </ion-header-bar>
+    <ion-content class="scroll-content ionic-scroll  has-header"><div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+      <ion-list class="disable-user-behavior"><div class="list">
+        <ion-item menu-close="" href="#/app/settings" class="item item-complex"><a class="item-content" ng-href="#/app/settings" href="http://localhost:8100/#/app/settings">
+          Settings
+        </a></ion-item>
+        <ion-item menu-close="" href="#/app/profile" class="item item-complex"><a class="item-content" ng-href="#/app/profile" href="http://localhost:8100/#/app/profile">
+          Profile
+        </a></ion-item>
+        <ion-item menu-close="" href="#/app/friendslist" class="item item-complex"><a class="item-content" ng-href="#/app/friendslist" href="http://localhost:8100/#/app/friendslist">
+          Friends List
+        </a></ion-item>
+        <ion-item menu-close="" href="#/app/events" class="item item-complex"><a class="item-content" ng-href="#/app/events" href="http://localhost:8100/#/app/events">
+          Events
+        </a></ion-item>
+        <ion-item menu-close="" href="#/app/mycalendar" class="item item-complex"><a class="item-content" ng-href="#/app/mycalendar" href="http://localhost:8100/#/app/mycalendar">
+          My Calendar
+        </a></ion-item>
+      </div></ion-list>
+    </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
+  </ion-side-menu>
+</ion-side-menus></ion-nav-view>
+  
+<script>//<![CDATA[
+document.write('<script src="//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1"><\/script>')
+//]]></script><script src="./localhost_files/livereload.js"></script>
+
+
+</body></html>
