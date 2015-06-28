@@ -100,6 +100,9 @@ angular.module('starter.controllers', [])
         });
         return currentTotal;
     };
+        $scope.showFull = function(cTotal, mTotal) {
+            if (mTotal === cTotal) return true;
+        }
 
   $scope.public = function(event) {
     return !event.private && !$scope.friendsFamily(event);
