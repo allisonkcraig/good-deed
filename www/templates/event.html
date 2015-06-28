@@ -2,20 +2,20 @@
     <ion-nav-title>
         <div class="logofont">Good Deed</div>
     </ion-nav-title>
-    <ion-content>
-        <div class="list card">
+    <ion-content class="scroll-content ionic-scroll has-header">
+
 
             <ion-item class="item item-divider">
                 <h2>{{ event.title }}</h2>
                 <p style="color: white">{{ event.date | date }}</p>
 
                 <div>
-                    <p><span class="title">Currently Signed Up:</span> <span style="color: white">{{ event.currentTotal}}</span></p>
-                    <p><span class="title">Need:</span> <span style="color: white">{{ event.maxTotal}}</span></p>
+                    <p><span class="title">Currently Signed Up:</span> <span style="color: white">{{ currentTotal(event) }}</span></p>
+                    <p><span class="title">Need:</span> <span style="color: white">{{ maxTotal(event) }}</span></p>
                 </div>
             </ion-item>
 
-            <div class="item item-body">
+            <div class="item item-body" style="overflow: visible;">
                 <div class="image" style="margin-bottom: 30px; background-color: #424242; border: 1px dashed lightgray;">
                     <img class="event_image" src="{{ event.image }}">
                 </div>
@@ -33,7 +33,7 @@
                             <p style="margin: 0; margin-top: 10px;"><span class="title">Currently Signed Up:</span> {{ role.attendence.current.length ? role.attendence.current.length : 0 }}</p>
                             <p style="margin: 0"><span class="title">Need:</span> {{ role.attendence.max }}</p>
                         </div>
-                        <button class="button button-positive" style="margin-top: 23px;">Sign me up!</button>
+                        <button class="button button-positive" ng-click="showConfirm(role)" style="margin-top: 23px;">Sign me up!</button>
                     </div>
 
                 </div>
@@ -50,6 +50,6 @@
                 </a>
             </div>
 
-        </div>
+
     </ion-content>
 </ion-view>

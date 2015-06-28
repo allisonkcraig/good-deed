@@ -57,8 +57,15 @@ p .title {
 	font-weight: bold;
 	text-transform: uppercase;
 }
-.item-content {
+.popup-head {
+	background-color: #424242;
+}
+.popup-head .popup-title {
+	color: white;
+}
 
+.popup-body {
+	text-align: center;
 }
 
 /* Empty. Add your own CSS if you like */
