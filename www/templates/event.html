@@ -1,46 +1,53 @@
 <ion-view>
-<ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
-  <ion-content>
-    <div class="list card">
+    <ion-nav-title>
+        <div class="logofont">Good Deed</div>
+    </ion-nav-title>
+    <ion-content>
+        <div class="list card">
 
-  <div class="item item-avatar">
-    <h2>{{ event.title }}</h2>
-    <p>{{ event.date | date }}</p>
-    <div>
-      <span>Current: {{ event.currentTotal}}</span>
-      <span>Total: {{ event.maxTotal}}</span>
-    </div>
-  </div>
+            <ion-item class="item item-divider">
+                <h2>{{ event.title }}</h2>
+                <p style="color: white">{{ event.date | date }}</p>
 
-  <div class="item item-body">
-    <img class="event_image" src="{{ event.image }}">
-    <p>{{ event.description }}</p>
+                <div>
+                    <p><span class="title">Currently Signed Up:</span> <span style="color: white">{{ event.currentTotal}}</span></p>
+                    <p><span class="title">Need:</span> <span style="color: white">{{ event.maxTotal}}</span></p>
+                </div>
+            </ion-item>
 
-    <h3>Roles</h3>
-    <div class="list">
+            <div class="item item-body">
+                <div class="image" style="margin-bottom: 30px; background-color: #424242; border: 1px dashed lightgray;">
+                    <img class="event_image" src="{{ event.image }}">
+                </div>
 
-      <div class="item item-button-right" ng-repeat="role in event.roles">
-        <div>
-          <span>{{ role.name }}</span>
-          <span>Current: {{ role.attendence.current.length ? role.attendence.current.length : 0 }}</span>
-          <span>Max: {{ role.attendence.max }}</span>
+                <h3>Description:</h3>
+                <p>{{ event.description }}</p>
+                <hr/>
+
+                <h3>We are in need of:</h3>
+                <br/>
+                <div class="list">
+                    <div class="item item-button-right" ng-repeat="role in event.roles">
+                        <div>
+                            <p style="margin: 0"><span class="title">Title:</span> {{ role.name }}</p>
+                            <p style="margin: 0"><span class="title">Currently Signed Up:</span> {{ role.attendence.current.length ? role.attendence.current.length : 0 }} <span class="title" style="margin-left: 20px;">Need:</span> {{ role.attendence.max }}</p>
+                        </div>
+                        <button class="button button-positive" style="margin-top: 12px;">Sign me up!</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    Share via
+            </div>
+
         </div>
-        <button class="button button-positive">Join</button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
-      <i class="icon ion-chatbox"></i>
-      Comment
-    </a>
-    <a class="tab-item" href="#">
-      <i class="icon ion-share"></i>
-      Share via
-  </div>
-
-</div>
-  </ion-content>
+    </ion-content>
 </ion-view>
