@@ -7,9 +7,8 @@
       </ion-item>
       <ion-item>
         <a class="item item-avatar" ng-repeat="friend in friendslist" href="#/app/friendslist/{{friend.id}}">
-          <img src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
-          <h2>{{ friend.title }}</h2>
-          <p>{{ friend.bio }}</p>
+          <img src=" {{ friend.image }} ">
+          <h2 style="margin-top: 10px; color: #424242;">{{ friend.title }}</h2>
           <i class="fa fa-chevron-right"></i>
         </a>
       </ion-item>

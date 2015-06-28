@@ -27,8 +27,8 @@
 
                     <p><span class="title">Event Date:</span> {{event.date | date}}</p>
 
-                    <p><span class="title">Currently Signed Up:</span> {{event.currentTotal}} <span
-                            class="title">Need:</span> {{event.maxTotal}}</p>
+                    <p><span class="title">Currently Signed Up:</span> {{ currentTotal(event) }} <span
+                            class="title">Need:</span> {{ maxTotal(event) }}</p>
                 </div>
                 <div class="right">
                     <i class="fa fa-chevron-right"></i>

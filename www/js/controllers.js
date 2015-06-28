@@ -133,16 +133,21 @@ angular.module('starter.controllers', [])
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.friendslist = [
-    { title: 'Amy Tsang', id: 0 },
-    { title: 'Rachel Harrigan', id: 1 },
-    { title: 'Derek Hammer', id: 3 }
+    { title: 'Amy Tsang', id: 0, image: '../img/amy.jpg' },
+    { title: 'Rachel Harrigan', id: 1, image: '../img/good-deed-logo.png' },
+    { title: 'Derek Hammer', id: 3, image: 'https://avatars2.githubusercontent.com/u/75005?v=3&s=460' }
   ];
 })
 .controller('SettingsCtrl', function($scope, $stateParams, Users, $state) {
-      $scope.goToEdit = function() { $state.go('app.settings'); }
+      $scope.goToEdit = function() {  }
       Users.$loaded().then(function() {
         $scope.user = Users.$getRecord(2);
       });
+
+        $scope.saveProfile = function() {
+            Users.$save($scope.user);
+            $state.go('app.profile');
+        }
 })
 .controller('SplashPageCtrl', function($scope, $stateParams) {
 })
