@@ -3,22 +3,31 @@
     <div class="list card">
 
   <div class="item item-avatar">
-    <img src="mcfly.jpg">
-    <h2>Event Name</h2>
-    <p>Event Date</p>
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.date | date }}</p>
+    <div>
+      <span>Current: {{ event.currentTotal}}</span>
+      <span>Total: {{ event.maxTotal}}</span>
+    </div>
   </div>
 
   <div class="item item-body">
-    <img class="event_image" src="img/event_photo_example.jpg">
-    <p>
-      Hi, my name is Doris and I need someone to help me make my lawn drought resistant! This is a one day project and I need 3 string indivisuals to help spread mulch and plant succulents. 
-    </p>
-    <button class="button button-full button-outline button-balanced">
-      Role - # / #
-    </button>
-    <button class="button button-full button-outline button-assertive">
-      Role - # / #
-    </button>
+    <img class="event_image" src="{{ event.image }}">
+    <p>{{ event.description }}</p>
+
+    <h3>Roles</h3>
+    <div class="list">
+
+      <div class="item item-button-right" ng-repeat="role in event.roles">
+        <div>
+          <span>{{ role.name }}</span>
+          <span>Current: {{ role.attendence.current.length ? role.attendence.current.length : 0 }}</span>
+          <span>Max: {{ role.attendence.max }}</span>
+        </div>
+        <button class="button button-positive">Join</button>
+      </div>
+
+    </div>
   </div>
 
   <div class="item tabs tabs-secondary tabs-icon-left">

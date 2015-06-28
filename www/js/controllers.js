@@ -58,33 +58,23 @@ angular.module('starter.controllers', [])
     friends: [1]
   };
 
-      Events.$loaded()
-          .then(function(events) {
-            events.forEach(function(event) {
-              event.maxTotal = 0;
-              event.currentTotal = 0;
-              event.roles.forEach(function(role) {
-               event.maxTotal += role.attendence.max;
-                event.currentTotal += role.attendence.current ? role.attendence.current.length : 0;
-              });
-            });
-          });
-
-      $scope.friendsFamily = function(event) {
-        return currentUser.friends.some(function(friendId) {
-          if (friendId == event.userId) {
-            return true;
-          }
-        })
+  $scope.friendsFamily = function(event) {
+    return currentUser.friends.some(function(friendId) {
+      if (friendId == event.userId) {
+        return true;
       }
+    })
+  }
 
-      $scope.public = function(event) {
-        return !event.private && !$scope.friendsFamily(event);
-      }
+  $scope.public = function(event) {
+    return !event.private && !$scope.friendsFamily(event);
+  }
 
-
-
-
+})
+.controller('EventCtrl', function($scope, $stateParams, Events) {
+   Events.$loaded().then(function() {
+     $scope.event = Events.$getRecord($stateParams.eventId);
+   });
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.events = [
@@ -96,13 +86,24 @@ angular.module('starter.controllers', [])
     { title: 'Rally', id: 6 }
   ];
 })
-.controller('EventCtrl', function($scope, $stateParams) {
-})
+
 .controller('MyCalendarCtrl', function($scope, $stateParams) {
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
-    .factory('Events', function($firebaseArray) {
-      var itemsRef = new Firebase("https://good-deed.firebaseio.com/events");
-      return $firebaseArray(itemsRef.orderByChild('date'));
-    });
+.factory('Events', function($firebaseArray) {
+  var itemsRef = new Firebase("https://good-deed.firebaseio.com/events");
+  var Events = $firebaseArray(itemsRef.orderByChild('date'));
+  Events.$loaded()
+      .then(function(events) {
+        events.forEach(function(event) {
+          event.maxTotal = 0;
+          event.currentTotal = 0;
+          event.roles.forEach(function(role) {
+            event.maxTotal += role.attendence.max;
+            event.currentTotal += role.attendence.current ? role.attendence.current.length : 0;
+          });
+        });
+      });
+  return Events;
+});
