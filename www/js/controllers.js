@@ -1,6 +1,10 @@
+var currentUser = {
+    friends: [1], userId: 2
+};
+
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $state, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $state, $timeout, Users, $stateParams) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -41,6 +45,10 @@ angular.module('starter.controllers', [])
   $scope.goToProfile = function() {
     $state.go('app.profile');
   }
+
+    Users.$loaded().then(function() {
+        $scope.user = Users.$getRecord(currentUser.userId);
+    });
 })
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -56,9 +64,6 @@ angular.module('starter.controllers', [])
 
 .controller('EventsCtrl', function($scope, Events) {
   $scope.events = Events;
-  var currentUser = {
-    friends: [1]
-  };
 
   $scope.friendsFamily = function(event) {
     return currentUser.friends.some(function(friendId) {
@@ -68,15 +73,63 @@ angular.module('starter.controllers', [])
     })
   }
 
+    $scope.maxTotal = function(event) {
+        var maxTotal = 0;
+        event.roles.forEach(function(role) {
+            maxTotal += role.attendence.max;
+        });
+        return maxTotal;
+    };
+
+    $scope.currentTotal = function(event) {
+        var currentTotal = 0;
+        event.roles.forEach(function(role) {
+            currentTotal += role.attendence.current ? role.attendence.current.length : 0;
+        });
+        return currentTotal;
+    };
+
   $scope.public = function(event) {
     return !event.private && !$scope.friendsFamily(event);
   }
 
 })
-.controller('EventCtrl', function($scope, $stateParams, Events) {
+.controller('EventCtrl', function($scope, $stateParams, Events, $ionicPopup) {
    Events.$loaded().then(function() {
      $scope.event = Events.$getRecord($stateParams.eventId);
    });
+
+    $scope.maxTotal = function(event) {
+        var maxTotal = 0;
+        event.roles.forEach(function(role) {
+            maxTotal += role.attendence.max;
+        });
+        return maxTotal;
+    };
+
+    $scope.currentTotal = function(event) {
+        var currentTotal = 0;
+        event.roles.forEach(function(role) {
+            currentTotal += role.attendence.current ? role.attendence.current.length : 0;
+        });
+        return currentTotal;
+    };
+
+    // A confirm dialog
+    $scope.showConfirm = function(role) {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Sign up for: ' + $scope.event.title,
+            template: '<span style="color:black; font-family: Arvo;">Please confirm your sign up.</span>'
+        });
+        confirmPopup.then(function(res) {
+            if(res) {
+                role.attendence.current.push(currentUser.userId);
+                Events.$save($scope.event);
+            } else {
+                console.log('Cancel');
+            }
+        });
+    };
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.friendslist = [
@@ -125,50 +178,52 @@ angular.module('starter.controllers', [])
       });
       $scope.badges = [];
 })
-.controller('MyCalendarCtrl', function($scope) {
-   $scope.mycalendar = [
-    { title: 'Soup Night - July 1st', id: 1 },
-    { title: 'Paint my Garage - July 8th', id: 2 },
-    { title: 'Yard Cleanup - July 8th', id: 3 }
-  ];
-})
+.controller('MyCalendarCtrl', function($scope, Events) {
+        $scope.events = Events;
+
+        $scope.myCalendar = function(event) {
+            return (event.roles.some(function(role) {
+                if (!role.attendence.current) return false;
+
+                return (role.attendence.current.some(function(currentId) {
+                    if (currentUser.userId === currentId) return true;
+                }));
+            }));
+        }
+
+        $scope.maxTotal = function(event) {
+            var maxTotal = 0;
+            event.roles.forEach(function(role) {
+                maxTotal += role.attendence.max;
+            });
+            return maxTotal;
+        };
+
+        $scope.currentTotal = function(event) {
+            var currentTotal = 0;
+            event.roles.forEach(function(role) {
+                currentTotal += role.attendence.current ? role.attendence.current.length : 0;
+            });
+            return currentTotal;
+        };
+
+
+
+    })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 .factory('Events', function($firebaseArray) {
   var itemsRef = new Firebase("https://good-deed.firebaseio.com/events");
   var Events = $firebaseArray(itemsRef.orderByChild('date'));
-  Events.$loaded()
-      .then(function(events) {
-        events.forEach(function(event) {
-          event.maxTotal = 0;
-          event.currentTotal = 0;
-          event.roles.forEach(function(role) {
-            event.maxTotal += role.attendence.max;
-            event.currentTotal += role.attendence.current ? role.attendence.current.length : 0;
-          });
-        });
-      });
   return Events;
 })
 .factory('Users', function($firebaseArray) {
   var itemsRef = new Firebase("https://good-deed.firebaseio.com/users");
   var Users = $firebaseArray(itemsRef);
-  Users.$loaded()
-      .then(function(users) {
-        users.forEach(function(user) {
-          //console.log(user);
-        });
-      });
   return Users;
 })
 .factory('Badges', function($firebaseArray) {
   var itemsRef = new Firebase("https://good-deed.firebaseio.com/badges");
   var Badges = $firebaseArray(itemsRef);
-  Badges.$loaded()
-      .then(function(badges) {
-        badges.forEach(function(badge) {
-          //console.log(badge);
-        });
-      });
   return Badges;
 });
