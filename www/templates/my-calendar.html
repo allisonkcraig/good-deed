@@ -2,6 +2,9 @@
 <ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
   <ion-content>
     <ion-list>
+    <ion-item class= "item item-divider"> 
+    	<h2>My Calendar</h2>
+    </ion-item>
       <ion-item ng-repeat="calendar in mycalendar" href="#/app/mycalendar/{{calendar.id}}">
         {{calendar.title}}
       </ion-item>
