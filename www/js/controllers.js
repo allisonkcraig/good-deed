@@ -77,17 +77,26 @@ angular.module('starter.controllers', [])
    });
 })
 .controller('FriendsListCtrl', function($scope) {
-  $scope.events = [
-    { title: 'Soup Kitchen', id: 1 },
-    { title: 'ASPCA', id: 2 },
-    { title: 'Clean the Streets', id: 3 },
-    { title: 'Soup Kitchen', id: 4 },
-    { title: 'Gardening', id: 5 },
-    { title: 'Rally', id: 6 }
+  $scope.friendslist = [
+    { title: 'Allison', id: 1 },
+    { title: 'Amy', id: 2 },
+    { title: 'Rachel', id: 3 },
+    { title: 'Derek', id: 4 },
   ];
 })
 
-.controller('MyCalendarCtrl', function($scope, $stateParams) {
+.controller('EventCtrl', function($scope, $stateParams) {
+})
+.controller('SplashPageCtrl', function($scope, $stateParams) {
+})
+.controller('ProfileCtrl', function($scope, $stateParams) {
+})
+.controller('MyCalendarCtrl', function($scope) {
+   $scope.mycalendar = [
+    { title: 'Soup Kitchen', id: 1 },
+    { title: 'Clean the Streets', id: 2 },
+    { title: 'Gardening', id: 3 },
+  ];
 })
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })

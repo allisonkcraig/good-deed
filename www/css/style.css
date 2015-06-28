@@ -1,4 +1,31 @@
 /* Empty. Add your own CSS if you like */
 .event_image {
-	max-width: 400px;
+	max-width: 80%;
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.profile_image {
+	max-width: 25%;
+	position: absolute;
+    right: 3px;
+}
+.open_event {
+
+}
+.closed_event {
+
+}
+.logofont {
+	font-family: Quicksand;
+}
+.splashfont {
+	font-family: Quicksand;
+	margin-top: 40%;
+	text-align: center;
+
+	font-size: 400%;
+}
+.splashbuttons {
+	margin-top: 60%;
 }
