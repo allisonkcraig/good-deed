@@ -1,8 +1,9 @@
 <ion-view view-title="My Calendar">
+<ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="events in my-calendar" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
+      <ion-item ng-repeat="calendar in mycalendar" href="#/app/mycalendar/{{calendar.id}}">
+        {{calendar.title}}
       </ion-item>
     </ion-list>
   </ion-content>

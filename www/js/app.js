@@ -77,8 +77,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
     }
   })
 
-    .state('app.my-calendar', {
-    url: "/my-calendar",
+    .state('app.mycalendar', {
+    url: "/mycalendar",
     views: {
       'menuContent': {
         templateUrl: "templates/my-calendar.html",
@@ -86,12 +86,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
       }
     }
   })
-    .state('app.friends-list', {
-    url: "/friends-list",
+    .state('app.splashpage', {
+    url: "/splashpage",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/splashpage.html",
+        controller: 'SplashPageCtrl'
+      }
+    }
+  })
+    .state('app.friendslist', {
+    url: "/friendslist",
     views: {
       'menuContent': {
         templateUrl: "templates/friends-list.html",
         controller: 'FriendsListCtrl'
+      }
+    }
+  })
+    .state('app.profile', {
+    url: "/profile",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/profile.html",
+        controller: 'ProfileCtrl'
       }
     }
   })
@@ -106,5 +124,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/events');
+  $urlRouterProvider.otherwise('/app/splashpage');
 });
