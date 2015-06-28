@@ -37,6 +37,10 @@ angular.module('starter.controllers', [])
     $state.go('app.events');
     $scope.modal.hide();
   };
+
+  $scope.goToProfile = function() {
+    $state.go('app.profile');
+  }
 })
 
 .controller('PlaylistsCtrl', function($scope) {
