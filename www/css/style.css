@@ -1,3 +1,61 @@
+@import url(/lib/font-awesome-4.3.0/css/font-awesome.min.css);
+
+/* Gobal */
+body {
+	font-family: "Quicksand";
+	color: #9CD7FF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Quicksand";
+	font-weight: bold;
+}
+
+.item h2 {
+	font-weight: bold;
+	color: #9CD7FF;
+	text-transform: uppercase;
+}
+.item h3 {
+	padding: 0;
+	margin: 0;
+	font-family: "Arvo";
+}
+.padding {
+	padding: 10px 30px;
+}
+
+.item-complex .item-content, .item-body {
+	padding: 16px;
+	font-family: "Arvo";
+	background-color: #F5F5F5;
+}
+
+p .title {
+	background-color: #9CD7FF;
+	padding: 3px 6px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	font-size: 0.7em;
+	vertical-align: top;
+	margin-right: 5px;
+	color: black;
+}
+
+.item-divider {
+	background-color: #434343;
+	color: #9CD7FF;
+	border: 0;
+	box-shadow: 1px 1px 5px #ccc;
+	z-index: 3;
+	text-align: left;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.item-content {
+
+}
+
 /* Empty. Add your own CSS if you like */
 .event_image {
 	max-width: 80%;
@@ -52,4 +110,46 @@ ion-view[special-class=splashpage] {
 #profile .item-avatar .info {
 	display: inline-block;
 	width: calc(100% - 80px);
+}
+
+#profile p {
+	text-align: justify;
+}
+
+
+/* Event List */
+
+#event_list .information p:first-of-type {
+	font-size: 1.1em;
+	text-decoration: underline;
+}
+
+#event_list .information p:nth-child(2) {
+	margin-top: 15px;
+}
+
+#event_list .information p .title + .title {
+	margin-left: 20px;
+}
+
+#event_list .information {
+	display: inline-block;
+	width: 80%;
+}
+
+#event_list .right {
+	display: inline-block;
+	width: 10%;
+	float: right;
+	margin-top: 33px;
+	text-align: right;
+}
+
+/* Friend's List */
+#friends_list .item-avatar .fa-chevron-right {
+	text-align: right;
+	display: block;
+	position: absolute;
+	top: 26px;
+	right: 20px;
 }

@@ -4,7 +4,7 @@
 
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
+$positive:                        #1C4B79 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
@@ -41,7 +41,7 @@ $base-color:                      #000 !default;
 $link-color:                      $positive !default;
 $link-hover-color:                darken($link-color, 15%) !default;
 
-$content-padding:                 10px !default;
+$content-padding:                 20px !default;
 
 $padding-base-vertical:           6px !default;
 $padding-base-horizontal:         12px !default;
