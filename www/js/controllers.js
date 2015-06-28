@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-    $state.go('app.events');
+    $state.go('app.mycalendar');
     $scope.modal.hide();
   };
 
