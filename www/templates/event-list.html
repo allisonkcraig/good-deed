@@ -8,17 +8,17 @@
                 <h2>Friends & Family Events:</h2>
             </ion-item>
             <ion-item ng-repeat="event in events | filter:friendsFamily" href="#/app/events/{{event.$id}}">
-                <div style="background-color: #33cd5f;
+                <div style="margin-bottom: 9px;" ng-show="showSignedUp(event)">
+                    <span style="background-color: #33cd5f;
                             border-radius: 4px;
-                            padding: 0px 10px;
+                            padding: 3px 10px;
                             color: white;
                             font-size: 0.6em;
                             text-transform: uppercase;
                             font-family: Quicksand;
                             font-weight: bold;
-                            width: 71px;
-                            margin-bottom: 9px;"
-                     ng-show="showSignedUp(event)">Signed Up</div>
+                            max-width: 200px;">Signed Up</span>
+                </div>
                 <div class="information">
                     <p>{{event.title}}</p>
                     <p><span class="title">Event Date:</span> {{event.date | date}}</p>
@@ -33,17 +33,17 @@
                 <h2>Public Events:</h2>
             </ion-item>
             <ion-item ng-repeat="event in events | filter:public" href="#/app/events/{{event.$id}}">
-                <div style="background-color: #33cd5f;
+                <div style="margin-bottom: 9px;" ng-show="showSignedUp(event)">
+                    <span style="background-color: #33cd5f;
                             border-radius: 4px;
-                            padding: 0px 10px;
+                            padding: 3px 10px;
                             color: white;
                             font-size: 0.6em;
                             text-transform: uppercase;
                             font-family: Quicksand;
                             font-weight: bold;
-                            width: 71px;
-                            margin-bottom: 9px;"
-                     ng-show="showSignedUp(event)">Signed Up</div>
+                            max-width: 200px;">Signed Up</span>
+                </div>
                 <div class="information">
                     <p>{{event.title}}</p>
 
