@@ -91,7 +91,7 @@ p .title {
 	font-size: 400%;
 }
 .splashbuttons {
-	margin-top: %;
+	margin-top: 25%;
 }
 ion-view[special-class=splashpage] {
 	background-image: url(img/white-linen-texture);

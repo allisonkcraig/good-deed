@@ -122,6 +122,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
       }
     }
   })
+    .state('app.profile-amy', {
+    url: "/friendslist/:friendId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/profile-amy.html",
+        controller: 'ProfileAmyCtrl'
+      }
+    }
+  })
 
   .state('app.single', {
     url: "/playlists/:playlistId",

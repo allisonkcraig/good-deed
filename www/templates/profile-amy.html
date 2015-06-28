@@ -1,0 +1,37 @@
+<ion-view view-title="Profile" id="profile">
+    <ion-nav-title>Good Deed</ion-nav-title>
+    <ion-content>
+        <div class="item item-divider">
+            <i class="fa fa-heart-o"></i> Profile
+        </div>
+        <div class="item item-avatar">
+            <img src="{{ user.image }}">
+            <div class="info">
+                <p><span class="title">Name:</span> {{ user.name.first }} {{ user.name.last }}</p>
+                <p><span class="title">Last Volunteer Event:</span> <!-- {{  }} --></p>
+            </div>
+        </div>
+        <div class="item item-body">
+            <h3>Bibliography:</h3>
+            <p>{{ user.bio }}</p>
+        </div>
+        <div class="item item-body" ng-show="user.viewPoints">
+            <p><span class="title">Current Points:</span> {{ user.counter }}</p>
+        </div>
+        <div class="item item-divider">
+            Badges Earned:
+        </div>
+
+        <div class="item item-body" style="text-align: center">
+            <div ng-repeat="badge in badges" style="width: 80px; height: 80px; display: inline-block; margin-right: 10px;">
+                <img src="{{ badge }}" style="height: 100%;"/>
+            </div>
+
+        </div>
+
+        <button class="button button-block button-positive" ng-click="goToEdit()">
+            Edit
+        </button>
+
+    </ion-content>
+</ion-view>

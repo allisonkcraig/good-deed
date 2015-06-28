@@ -80,9 +80,9 @@ angular.module('starter.controllers', [])
 })
 .controller('FriendsListCtrl', function($scope) {
   $scope.friendslist = [
-    { title: 'Amy Tsang', id: 2 },
-    { title: 'Rachel Smith', id: 3 },
-    { title: 'Derek Hammer', id: 4 }
+    { title: 'Amy Tsang', id: 0 },
+    { title: 'Rachel Harrigan', id: 1 },
+    { title: 'Derek Hammer', id: 3 }
   ];
 })
 .controller('SettingsCtrl', function($scope, $stateParams, Users, $state) {
@@ -97,6 +97,22 @@ angular.module('starter.controllers', [])
       $scope.goToEdit = function() { $state.go('app.settings'); }
       Users.$loaded().then(function() {
         $scope.user = Users.$getRecord(2);
+      });
+      Badges.$loaded().then(function() {
+        $scope.badge = Badges;
+        Badges.forEach(function(badge) {
+          if (badge.score.max <= $scope.user.counter) {
+            $scope.badgeImage = badge.image;
+            $scope.badges.push($scope.badgeImage);
+          }
+        });
+      });
+      $scope.badges = [];
+})
+.controller('ProfileAmyCtrl', function($scope, $stateParams, Users, $state, Badges) {
+      $scope.goToEdit = function() { $state.go('app.profile-amy'); }
+      Users.$loaded().then(function() {
+        $scope.user = Users.$getRecord($stateParams.friendId);
       });
       Badges.$loaded().then(function() {
         $scope.badge = Badges;
