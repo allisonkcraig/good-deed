@@ -111,13 +111,15 @@ angular.module('starter.controllers', [])
         $scope.event = Events.$getRecord($stateParams.eventId);
     });
 
-    $scope.showSignedUp = function(role) {
-        if (!role.attendence.current) return false;
+    $scope.showSignedUp = function(event) {
+        return event.roles.some(function(role) {
+            if (!role.attendence.current) return false;
 
-        return role.attendence.current.some(function(currentId) {
-            if (currentUser.userId === currentId) {
-                return true;
-            }
+            return role.attendence.current.some(function(currentId) {
+                if (currentUser.userId === currentId) {
+                    return true;
+                }
+            });
         });
     }
 
