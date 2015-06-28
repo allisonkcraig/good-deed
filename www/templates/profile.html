@@ -1,46 +1,32 @@
 <ion-view view-title="Profile" id="profile">
     <ion-nav-title>Good Deed</ion-nav-title>
     <ion-content>
-
-        <div class="list card">
-
-            <div class="item item-avatar">
-                <div class="image">
-                    <img src="{{ user.image }}">
-                </div>
-                <div class="info">
-                    Name: {{ user.name.first }} {{ user.name.last }}<br/>
-                    Last Volunteer Event: <!-- {{  }} -->
-                </div>
+        <div class="item item-divider">
+            <i class="fa fa-heart-o"></i> Profile
+        </div>
+        <div class="item item-avatar">
+            <img src="{{ user.image }}">
+            <div class="info">
+                <p><span class="title">Name:</span> {{ user.name.first }} {{ user.name.last }}</p>
+                <p><span class="title">Last Volunteer Event:</span> <!-- {{  }} --></p>
             </div>
-
-            <div class="item item-body">
-                <h3>Bio</h3>
-
-                <p>{{ user.bio }}</p>
-
-            </div>
-
+        </div>
+        <div class="item item-body">
+            <h3>Bibliography:</h3>
+            <p>{{ user.bio }}</p>
+        </div>
+        <div class="item item-body" ng-show="user.viewPoints">
+            <p><span class="title">Current Points:</span> {{ user.points }}</p>
+        </div>
+        <div class="item item-divider">
+            Badges Earned:
         </div>
 
-        <div class="list card" ng-show="user.viewPoints">
-            <div class="item item-body">
-                <h3>Points: {{ user.points }}</h3>
-
-            </div>
-
-        </div>
-
-        <div class="list card">
-            <div class="item item-body">
-                <h3>Badges</h3>
-
-                <div class="list list-inset">
-                    <div class="item" ng-repeat="badge in badges">
-                        {{ badge.name }}
-                    </div>
+        <div class="item item-body">
+            <div class="list list-inset">
+                <div class="item" ng-repeat="badge in badges">
+                    {{ badge.name }}
                 </div>
-
             </div>
 
         </div>

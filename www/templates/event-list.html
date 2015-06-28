@@ -1,24 +1,39 @@
-<ion-view view-title="Events">
-<ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
-  <ion-content>
-    <ion-list>
-    	<ion-item class= "item item-divider"> 
-    	<h2>Friends & Family</h2>
-    </ion-item>
-      <ion-item ng-repeat="event in events | filter:friendsFamily" href="#/app/events/{{event.$id}}">
+<ion-view view-title="Events" id="event_list">
+    <ion-nav-title>
+        <div class="logofont">Good Deed</div>
+    </ion-nav-title>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-divider">
+                <h2>Friends & Family Events:</h2>
+            </ion-item>
+            <ion-item ng-repeat="event in events | filter:friendsFamily" href="#/app/events/{{event.$id}}">
+                <div class="information">
+                    <p>{{event.title}}</p>
+                    <p><span class="title">Event Date:</span> {{event.date | date}}</p>
+                    <p><span class="title">Currently Signed Up:</span> {{event.currentTotal}} <span
+                            class="title">Need:</span> {{event.maxTotal}}</p>
+                </div>
+                <div class="right">
+                    <i class="fa fa-chevron-right"></i>
+                </div>
+            </ion-item>
+            <ion-item class="item item-divider">
+                <h2>Public Events:</h2>
+            </ion-item>
+            <ion-item ng-repeat="event in events | filter:public" href="#/app/events/{{event.$id}}">
+                <div class="information">
+                    <p>{{event.title}}</p>
 
-        <div>{{event.title}}</div>
-        <div>{{event.date | date}}</div>
-        <div>Current: {{event.currentTotal}} Max: {{event.maxTotal}}</div>
-      </ion-item>
-      <ion-item class= "item item-divider"> 
-    	<h2>Public</h2>
-    </ion-item>
-      <ion-item ng-repeat="event in events | filter:public" href="#/app/events/{{event.$id}}">
-        <div>{{event.title}}</div>
-        <div>{{event.date | date}}</div>
-        <div>Current: {{event.currentTotal}} Max: {{event.maxTotal}}</div>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+                    <p><span class="title">Event Date:</span> {{event.date | date}}</p>
+
+                    <p><span class="title">Currently Signed Up:</span> {{event.currentTotal}} <span
+                            class="title">Need:</span> {{event.maxTotal}}</p>
+                </div>
+                <div class="right">
+                    <i class="fa fa-chevron-right"></i>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>

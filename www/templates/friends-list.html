@@ -1,13 +1,20 @@
-<ion-view view-title="Friends List">
+<ion-view view-title="Friends List" id="friends_list">
 <ion-nav-title><div class="logofont">Good Deed</div></ion-nav-title>
   <ion-content>
     <ion-list>
-    <ion-item class= "item item-divider"> 
-    	<h2>My Friends</h2>
-    </ion-item>
-      <ion-item ng-repeat="friend in friendslist" href="#/app/friendslist/{{friend.id}}">
-        {{friend.title}}
+      <ion-item class= "item item-divider">
+          <h2>Friends & Families</h2>
       </ion-item>
-    </ion-list>
+      <ion-item>
+        <a class="item item-avatar" ng-repeat="friend in friendslist" href="#/app/friendslist/{{friend.id}}">
+          <img src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+          <h2>{{ friend.title }}</h2>
+          <p>{{ friend.bio }}</p>
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </ion-item>
+    <ion-item class= "item item-divider">
+      <h2>Community Users</h2>
+    </ion-item>
   </ion-content>
 </ion-view>
