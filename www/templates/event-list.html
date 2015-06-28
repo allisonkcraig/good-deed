@@ -8,6 +8,7 @@
                 <h2>Friends & Family Events:</h2>
             </ion-item>
             <ion-item ng-repeat="event in events | filter:friendsFamily" href="#/app/events/{{event.$id}}">
+                <!--<div style="" ng-show="">Signed Up</div>-->
                 <div class="information">
                     <p>{{event.title}}</p>
                     <p><span class="title">Event Date:</span> {{event.date | date}}</p>
