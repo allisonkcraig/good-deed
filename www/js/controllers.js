@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('EventsCtrl', function($scope, Events) {
+.controller('EventsCtrl', function($scope, Events, Users) {
   $scope.events = Events;
 
   $scope.friendsFamily = function(event) {
@@ -71,6 +71,18 @@ angular.module('starter.controllers', [])
         return true;
       }
     })
+  }
+
+  $scope.showSignedUp = function(event) {
+      return event.roles.some(function(role) {
+          if (!role.attendence.current) return false;
+
+          return role.attendence.current.some(function(currentId) {
+              if (currentUser.userId === currentId) {
+                  return true;
+              }
+          });
+      });
   }
 
     $scope.maxTotal = function(event) {
